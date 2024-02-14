@@ -5,6 +5,8 @@
       <module fileurl="file://$PROJECT_DIR$/DIS.iml" filepath="$PROJECT_DIR$/DIS.iml" />
       <module fileurl="file://$PROJECT_DIR$/L01/L01.iml" filepath="$PROJECT_DIR$/L01/L01.iml" />
       <module fileurl="file://$PROJECT_DIR$/L02/L02.iml" filepath="$PROJECT_DIR$/L02/L02.iml" />
+      <module fileurl="file://$PROJECT_DIR$/L03/L03.iml" filepath="$PROJECT_DIR$/L03/L03.iml" />
+      <module fileurl="file://$PROJECT_DIR$/L04 - Socketprogrammering/L04 - Socketprogrammering.iml" filepath="$PROJECT_DIR$/L04 - Socketprogrammering/L04 - Socketprogrammering.iml" />
     </modules>
   </component>
 </project>
