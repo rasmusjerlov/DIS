@@ -11,22 +11,26 @@ public class ServerThread extends Thread {
 	}
 
 	public void run() {
+		BufferedReader inFromClient = null;
+		DataOutputStream outToClient = null;
 		try {
-			BufferedReader inFromClient = new BufferedReader(new InputStreamReader(connSocket.getInputStream()));
-			DataOutputStream outToClient = new DataOutputStream(connSocket.getOutputStream());
+			inFromClient = new BufferedReader(new InputStreamReader(connSocket.getInputStream()));
+			outToClient = new DataOutputStream(connSocket.getOutputStream());
 
 			// Do the work and the communication with the client here	
 			// The following two lines are only an example
 			String clientSentence = inFromClient.readLine();
+			System.out.println(clientSentence);
 
 			String[] stringArray = null;
 			stringArray = clientSentence.split("\\s+");
 //			outToClient.writeBytes("ecco " + clientSentence + '\n' );
-			String filename = "/Users/rasmusjerlov/Desktop/myWeb/" + stringArray[1];
-			String contentType = ContentType(filename);
+			String filename = "/Users/rasmusjerlov/Desktop/myWeb" + stringArray[1];
+			String contentType = ContentType(stringArray[1]);
 			byte[] file = read(filename);
 
 			//HTTP RESPONSE BESKED START
+
 			outToClient.writeBytes("HTTP/1.1 200 OK \n");
 			outToClient.writeBytes(contentType);
 			outToClient.writeBytes("Connection: Close \n");
@@ -49,22 +53,24 @@ public class ServerThread extends Thread {
 		byte[] result = new byte[(int) file.length()];
 		try {
 			InputStream input = null;
-			try {
-				int totalBytesRead = 0;
-				input = new BufferedInputStream(new FileInputStream(file));
-				while (totalBytesRead < result.length) {
-					int bytesRemaining = result.length - totalBytesRead;
-					int bytesRead = input.read(result, totalBytesRead, bytesRemaining);
+
+				try {
+					int totalBytesRead = 0;
+					input = new BufferedInputStream(new FileInputStream(file));
+					while (totalBytesRead < result.length) {
+						int bytesRemaining = result.length - totalBytesRead;
+						int bytesRead = input.read(result, totalBytesRead, bytesRemaining);
 // input.read() returns -1, 0, or more :
-					if (bytesRead > 0) {
-						totalBytesRead = totalBytesRead + bytesRead;
+						if (bytesRead > 0) {
+							totalBytesRead = totalBytesRead + bytesRead;
+						}
 					}
+					System.out.println("Num bytes read: " + totalBytesRead);
+				} finally {
+					System.out.println("Closing input stream.");
+					input.close();
 				}
-				System.out.println("Num bytes read: " + totalBytesRead);
-			} finally {
-				System.out.println("Closing input stream.");
-				input.close();
-			}
+
 		} catch (FileNotFoundException ex) {
 			throw ex;
 		} catch (IOException ex) {

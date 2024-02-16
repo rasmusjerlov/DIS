@@ -7,6 +7,7 @@
       <module fileurl="file://$PROJECT_DIR$/L02/L02.iml" filepath="$PROJECT_DIR$/L02/L02.iml" />
       <module fileurl="file://$PROJECT_DIR$/L03/L03.iml" filepath="$PROJECT_DIR$/L03/L03.iml" />
       <module fileurl="file://$PROJECT_DIR$/L04 - Socketprogrammering/L04 - Socketprogrammering.iml" filepath="$PROJECT_DIR$/L04 - Socketprogrammering/L04 - Socketprogrammering.iml" />
+      <module fileurl="file://$PROJECT_DIR$/SocketProjekt/SocketProjekt.iml" filepath="$PROJECT_DIR$/SocketProjekt/SocketProjekt.iml" />
     </modules>
   </component>
 </project>
